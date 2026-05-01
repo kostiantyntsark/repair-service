@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Доступні послуги</h1>
+{% for s in services %}
+    <div>
+        <h3><a href="{% url 'service_detail' s.pk %}">{{ s.name }}</a></h3>
+        <p>Ціна: {{ s.price }} грн | Термін: {{ s.duration_days }} дн.</p>
+    </div>
+{% endfor %}
+{% endblock %}

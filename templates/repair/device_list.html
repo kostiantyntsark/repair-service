@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Мої пристрої</h1>
+<a href="{% url 'device_create' %}">+ Додати пристрій</a>
+{% for d in devices %}
+    <div>
+        <strong>{{ d.name }}</strong> ({{ d.get_device_type_display }})
+        <a href="{% url 'device_delete' d.pk %}">Видалити</a>
+    </div>
+{% empty %}
+    <p>Пристроїв немає.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Замовлення #{{ order.pk }}</h1>
+<p>Пристрій: {{ order.device.name }}</p>
+<p>Послуга: {{ order.service.name }}</p>
+<p>Статус: <strong>{{ order.get_status_display }}</strong></p>
+<p>Коментар: {{ order.comment }}</p>
+<p>Дата: {{ order.created_at|date:"d.m.Y" }}</p>
+<a href="{% url 'order_list' %}">← Назад</a>
+{% endblock %}

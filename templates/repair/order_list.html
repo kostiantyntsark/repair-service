@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Мої замовлення</h1>
+<a href="{% url 'order_create' %}">+ Нове замовлення</a>
+{% for o in orders %}
+    <div>
+        <a href="{% url 'order_detail' o.pk %}">{{ o.device.name }} → {{ o.service.name }}</a>
+        — <strong>{{ o.get_status_display }}</strong>
+    </div>
+{% empty %}
+    <p>Замовлень немає.</p>
+{% endfor %}
+{% endblock %}
