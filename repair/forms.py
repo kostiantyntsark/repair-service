@@ -1,15 +1,20 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from .models import Service, Device, RepairOrder
 
 
-class RegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-
+class ServiceForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        model = Service
+        fields = ['name', 'description', 'price', 'duration_days']
 
 
-class LoginForm(AuthenticationForm):
-    pass
+class DeviceForm(forms.ModelForm):
+    class Meta:
+        model = Device
+        fields = ['name', 'device_type', 'serial_number']
+
+
+class RepairOrderForm(forms.ModelForm):
+    class Meta:
+        model = RepairOrder
+        fields = ['device', 'service', 'comment']
